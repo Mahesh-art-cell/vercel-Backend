@@ -1,26 +1,3 @@
-// const express = require('express');
-// const router = express.Router();
-// const Transaction = require('../models/Transaction');
-// // const Transaction = require("../models/Transaction")
-
-// router.get('/', async (req, res) => {
-//   const txs = await Transaction.find().sort({ date: -1 });
-//   res.json(txs);
-// });
-
-// router.post('/', async (req, res) => {
-//   const { amount, date, description } = req.body;
-//   const newTx = new Transaction({ amount, date, description });
-//   await newTx.save();
-//   res.status(201).json(newTx);
-// });
-
-// router.delete('/:id', async (req, res) => {
-//   await Transaction.findByIdAndDelete(req.params.id);
-//   res.json({ message: 'Deleted' });
-// });
-
-// module.exports = router;
 
 
 
