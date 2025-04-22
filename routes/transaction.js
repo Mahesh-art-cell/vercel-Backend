@@ -7,6 +7,7 @@ const Transaction = require("../models/Transaction");
 const router = express.Router();
 
 // Create a new transaction
+// Create a new transaction
 router.post("/", async (req, res) => {
   const { amount, date, description } = req.body;
 
@@ -19,9 +20,15 @@ router.post("/", async (req, res) => {
     await newTransaction.save();
     res.status(201).json(newTransaction);
   } catch (err) {
-    res.status(400).json({ error: "Failed to add transaction" });
+    console.error("Error while saving transaction:", err);  // logs full error
+    res.status(400).json({
+      error: "Failed to add transaction",
+      message: err.message,
+      stack: err.stack
+    });
   }
-});
+})  
+
 
 // Get all transactions
 router.get("/", async (req, res) => {
@@ -52,11 +59,12 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     await Transaction.findByIdAndDelete(req.params.id);
-    res.status(204).send();
+    res.status(200).json({ message: "Transaction deleted successfully" });
   } catch (err) {
     res.status(400).json({ error: "Failed to delete transaction" });
   }
 });
+
 
 module.exports = router;
 
