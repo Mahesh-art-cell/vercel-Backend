@@ -35,7 +35,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB Connection
-mongoose.connect("mongodb+srv://mtalluri563:mahe@cluster0.jegn62a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -50,5 +50,5 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/budgets', budgetRoutes);
 
 // Server Listening
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
