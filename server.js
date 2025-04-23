@@ -5,14 +5,18 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
+const app = express();
+
+app.use(cors());
+
+
+
 const transaction = require("./routes/transaction");
 const categoryRoutes = require("./routes/categories");
 const budgetRoutes = require("./routes/budgets");
 
-const app = express();
 
 // Middleware
-app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB Connection
